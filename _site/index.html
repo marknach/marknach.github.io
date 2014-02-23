@@ -39,6 +39,39 @@
 
       <div class="posts">
   
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/02/23/ruby-refinements/">
+        Ruby Refinements
+      </a>
+    </h1>
+
+    <span class="post-date">23 Feb 2014</span>
+
+    <p>Want to monkey patch a ruby class, but hesitant of the impact of global changes?  Ruby 2.1 introduces Refinements, which allow you to monkey patch a class, limited to a local scope.</p>
+
+<p>For example, let&#39;s say you frequently have the need to calculate factorials. You think about monkey patching in a ! method onto fixnum, but know that it will lead to unintended consequences if others using your code are not aware ( e.g. someone tries to coerce a numeric to a boolean by using !!number ).</p>
+
+<p>So instead, we define a refinement inside a Factorial module -</p>
+
+<div class="highlight"><pre><code class="ruby">  <span class="k">module</span> <span class="nn">Factorial</span>
+    <span class="n">refine</span> <span class="no">Fixnum</span> <span class="k">do</span>
+      <span class="k">def</span> <span class="o">!</span>
+        <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span> <span class="o">||</span> <span class="mi">1</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div>
+
+<p>Now, we can use this anywhere we include our module, but won&#39;t impact code elsewhere.</p>
+
+<div class="highlight"><pre><code class="ruby">  <span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints false</span>
+  <span class="n">using</span> <span class="no">Factorial</span>
+  <span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints 120</span>
+</code></pre></div>
+
+  </div>
+  
 </div>
 
 <div class="pagination">
