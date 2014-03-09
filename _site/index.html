@@ -41,34 +41,36 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014/02/23/ruby-refinements/">
-        Ruby Refinements
+      <a href="/2014/03/08/t-i-l/">
+        T I L
       </a>
     </h1>
 
-    <span class="post-date">23 Feb 2014</span>
+    <span class="post-date">08 Mar 2014</span>
 
-    <p>Want to monkey patch a ruby class, but hesitant of the impact of global changes?  Ruby 2.1 introduces Refinements, which allow you to monkey patch a class, limited to a local scope.</p>
+    <p>When I started learning ruby, what really intrigued me was the fact that 99% of the time I didn&#39;t know how to do something, I could just guess, and it ended up being right (or close to it).</p>
 
-<p>For example, let&#39;s say you frequently have the need to calculate factorials. You think about monkey patching in a ! method onto fixnum, but know that it will lead to unintended consequences if others using your code are not aware ( e.g. someone tries to coerce a numeric to a boolean by using !!number ).</p>
+<p>Every once and a while though, I run into something that makes me scratch my head.  </p>
 
-<p>So instead, we define a refinement inside a Factorial module -</p>
+<p>For example, take a look at the following code snippet:</p>
 
-<div class="highlight"><pre><code class="ruby">  <span class="k">module</span> <span class="nn">Factorial</span>
-    <span class="n">refine</span> <span class="no">Fixnum</span> <span class="k">do</span>
-      <span class="k">def</span> <span class="o">!</span>
-        <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span> <span class="o">||</span> <span class="mi">1</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
+<div class="highlight"><pre><code class="ruby">  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span>
+  <span class="c1"># =&gt; true</span>
 </code></pre></div>
 
-<p>Now, we can use this anywhere we include our module, but won&#39;t impact code elsewhere.</p>
+<p>Wait, how is that possible? The problem here is that unlike &amp;&amp;, &#39;and&#39; has a lower operator precedence than &#39;=&#39;, and thus:</p>
 
-<div class="highlight"><pre><code class="ruby">  <span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints false</span>
-  <span class="n">using</span> <span class="no">Factorial</span>
-  <span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints 120</span>
+<div class="highlight"><pre><code class="ruby">  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span> 
+  <span class="c1"># =&gt; (x = true) and false</span>
 </code></pre></div>
+
+<p>While the line returns false (as expected), we end up assigning true to x.</p>
 
   </div>
   
@@ -76,7 +78,7 @@
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>

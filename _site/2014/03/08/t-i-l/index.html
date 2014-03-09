@@ -1,0 +1,23 @@
+<p>When I started learning ruby, what really intrigued me was the fact that 99% of the time I didn&#39;t know how to do something, I could just guess, and it ended up being right (or close to it).</p>
+
+<p>Every once and a while though, I run into something that makes me scratch my head.  </p>
+
+<p>For example, take a look at the following code snippet:</p>
+
+<div class="highlight"><pre><code class="ruby">  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span>
+  <span class="c1"># =&gt; false</span>
+  <span class="n">x</span>
+  <span class="c1"># =&gt; true</span>
+</code></pre></div>
+
+<p>Wait, how is that possible? The problem here is that unlike &amp;&amp;, &#39;and&#39; has a lower operator precedence than &#39;=&#39;, and thus:</p>
+
+<div class="highlight"><pre><code class="ruby">  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span> 
+  <span class="c1"># =&gt; (x = true) and false</span>
+</code></pre></div>
+
+<p>While the line returns false (as expected), we end up assigning true to x.</p>
