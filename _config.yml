@@ -8,15 +8,17 @@ permalink:        pretty
 # Setup
 title:            Mark Nachazel
 tagline:          ''
+description:      ''
+url:              http://marknach.github.io
 
 author:
   name:           'Mark Nachazel'
   url:            https://twitter.com/marknach
 
-paginate:         3
+paginate:         5
 
 # Custom vars
-version:          1.0.0
+version:          2.0.0
 
 github:
-  repo:           https://github.com/poole/poole
+  repo:           https://github.com/marknach

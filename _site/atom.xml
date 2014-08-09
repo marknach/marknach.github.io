@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Mark Nachazel</title>
+ <link href="http://marknach.github.io/atom.xml" rel="self"/>
+ <link href="http://marknach.github.io/"/>
+ <updated>2014-08-09T12:36:05-04:00</updated>
+ <id>http://marknach.github.io</id>
+ <author>
+   <name>Mark Nachazel</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Today I Learned</title>
+   <link href="http://marknach.github.io/2014/03/08/t-i-l/"/>
+   <updated>2014-03-08T00:00:00-05:00</updated>
+   <id>http://marknach.github.io/2014/03/08/t-i-l</id>
+   <content type="html">&lt;p&gt;When I started learning ruby, what really intrigued me was the fact that 99% of the time I didn&amp;#39;t know how to do something, I could just guess, and it ended up being right (or close to it).&lt;/p&gt;
+
+&lt;p&gt;Every once and a while though, I run into something that makes me scratch my head.  &lt;/p&gt;
+
+&lt;p&gt;For example, take a look at the following code snippet:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; false&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; false&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; false&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Wait, how is that possible? The problem here is that unlike &amp;amp;&amp;amp;, &amp;#39;and&amp;#39; has a lower operator precedence than &amp;#39;=&amp;#39;, and thus:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; (x = true) and false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;While the line returns false (as expected), we end up assigning true to x.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ruby Refinements</title>
+   <link href="http://marknach.github.io/2014/02/23/ruby-refinements/"/>
+   <updated>2014-02-23T00:00:00-05:00</updated>
+   <id>http://marknach.github.io/2014/02/23/ruby-refinements</id>
+   <content type="html">&lt;p&gt;Want to monkey patch a ruby class, but hesitant of the impact of global changes?  Ruby 2.1 introduces Refinements, which allow you to monkey patch a class, limited to a local scope.&lt;/p&gt;
+
+&lt;p&gt;For example, let&amp;#39;s say you frequently have the need to calculate factorials. You think about monkey patching in a ! method onto fixnum, but know that it will lead to unintended consequences if others using your code are not aware ( e.g. someone tries to coerce a numeric to a boolean by using !!number ).&lt;/p&gt;
+
+&lt;p&gt;So instead, we define a refinement inside a Factorial module -&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Factorial&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;refine&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Fixnum&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, we can use this anywhere we include our module, but won&amp;#39;t impact code elsewhere.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# prints false&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Factorial&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# prints 120&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+
+</feed>
