@@ -19,6 +19,6 @@ So instead, we define a refinement inside a Factorial module -
 Now, we can use this anywhere we include our module, but won't impact code elsewhere.
 {% highlight ruby %}
   puts !5 # prints false
-  using Factorial
-  puts !5 # prints 120
+using Factorial
+puts !5 # prints 120
 {% endhighlight %}
