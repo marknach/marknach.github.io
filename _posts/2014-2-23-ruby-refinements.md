@@ -8,13 +8,13 @@ For example, let's say you frequently have the need to calculate factorials. You
 
 So instead, we define a refinement inside a Factorial module -
 {% highlight ruby %}
-  module Factorial
-    refine Fixnum do
-      def !
-        (1..self).reduce(:*) || 1
-      end
+module Factorial
+  refine Fixnum do
+    def !
+      (1..self).reduce(:*) || 1
     end
   end
+end
 {% endhighlight %}
 Now, we can use this anywhere we include our module, but won't impact code elsewhere.
 {% highlight ruby %}
