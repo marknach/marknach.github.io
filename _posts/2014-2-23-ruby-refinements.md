@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ruby Refinements
+categories: programming
 ---
 Want to monkey patch a ruby class, but hesitant of the impact of global changes?  Ruby 2.1 introduces Refinements, which allow you to monkey patch a class, limited to a local scope.
 
@@ -18,7 +19,7 @@ end
 {% endhighlight %}
 Now, we can use this anywhere we include our module, but won't impact code elsewhere.
 {% highlight ruby %}
-  puts !5 # prints false
+puts !5 # prints false
 using Factorial
 puts !5 # prints 120
 {% endhighlight %}

@@ -52,7 +52,7 @@
         
           
             <li class="sidebar-nav-item">
-              <a href="/about/">About</a>
+              <a href="/about.html">About</a>
             </li>
           
         
@@ -60,6 +60,22 @@
         
       
         
+          
+            <li class="sidebar-nav-item">
+              <a href="/fitness/index.html">Fitness</a>
+            </li>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/programming/index.html">Programming</a>
+            </li>
           
         
       
@@ -83,12 +99,12 @@
 <p>So instead, we define a refinement inside a Factorial module -</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Factorial</span>
-    <span class="n">refine</span> <span class="no">Fixnum</span> <span class="k">do</span>
-      <span class="k">def</span> <span class="o">!</span>
-        <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span> <span class="o">||</span> <span class="mi">1</span>
-      <span class="k">end</span>
+  <span class="n">refine</span> <span class="no">Fixnum</span> <span class="k">do</span>
+    <span class="k">def</span> <span class="o">!</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span> <span class="o">||</span> <span class="mi">1</span>
     <span class="k">end</span>
-  <span class="k">end</span></code></pre></div>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
 
 <p>Now, we can use this anywhere we include our module, but won&#39;t impact code elsewhere.</p>
 
@@ -104,7 +120,16 @@
     
       <li>
         <h3>
-          <a href="/2014/03/08/t-i-l/">
+          <a href="/ruby-pt1/">
+            Ruby Pt. 1
+            <small>13 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/programming/t-i-l/">
             Today I Learned
             <small>08 Mar 2014</small>
           </a>

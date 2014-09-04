@@ -52,7 +52,7 @@
         
           
             <li class="sidebar-nav-item">
-              <a href="/about/">About</a>
+              <a href="/about.html">About</a>
             </li>
           
         
@@ -60,6 +60,22 @@
         
       
         
+          
+            <li class="sidebar-nav-item">
+              <a href="/fitness/index.html">Fitness</a>
+            </li>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/programming/index.html">Programming</a>
+            </li>
           
         
       
@@ -83,18 +99,18 @@
 <p>For example, take a look at the following code snippet:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span>
-  <span class="c1"># =&gt; false</span>
-  <span class="n">x</span>
-  <span class="c1"># =&gt; false</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span>
-  <span class="c1"># =&gt; false</span>
-  <span class="n">x</span>
-  <span class="c1"># =&gt; true</span></code></pre></div>
+<span class="c1"># =&gt; false</span>
+<span class="n">x</span>
+<span class="c1"># =&gt; false</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span>
+<span class="c1"># =&gt; false</span>
+<span class="n">x</span>
+<span class="c1"># =&gt; true</span></code></pre></div>
 
 <p>Wait, how is that possible? The problem here is that unlike &amp;&amp;, &#39;and&#39; has a lower operator precedence than &#39;=&#39;, and thus:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="ow">and</span> <span class="kp">false</span> 
-  <span class="c1"># =&gt; (x = true) and false</span></code></pre></div>
+<span class="c1"># =&gt; (x = true) and false</span></code></pre></div>
 
 <p>While the line returns false (as expected), we end up assigning true to x.</p>
 
@@ -106,7 +122,16 @@
     
       <li>
         <h3>
-          <a href="/2014/02/23/ruby-refinements/">
+          <a href="/ruby-pt1/">
+            Ruby Pt. 1
+            <small>13 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/programming/ruby-refinements/">
             Ruby Refinements
             <small>23 Feb 2014</small>
           </a>
