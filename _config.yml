@@ -1,9 +1,5 @@
-# Dependencies
-markdown:         redcarpet
-highlighter:      pygments
-
 # Permalinks
-permalink:        /:categories/:title/
+permalink:        pretty
 
 # Setup
 title:            Mark Nachazel
@@ -22,3 +18,6 @@ version:          2.0.0
 
 github:
   repo:           https://github.com/marknach
+
+markdown: rdiscount
+gems: [jekyll-paginate, rdiscount]
