@@ -101,26 +101,25 @@
 
     <p>Today I set out at what I thought was going to be a simple task, creating a generic segmented control.</p>
 
-<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">renderSegment</span> <span class="o">=</span> <span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">activeIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">renderSegment</span> <span class="o">=</span> <span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">activeIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kr">const</span> <span class="nx">cls</span> <span class="o">=</span> <span class="nx">classnames</span><span class="p">({</span>
         <span class="na">segment</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">active</span><span class="p">:</span> <span class="nx">index</span> <span class="o">===</span> <span class="nx">activeIndex</span>
-    <span class="p">});</span></p>
+    <span class="p">});</span>
 
-<pre><code>&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;div&lt;/span&gt; &lt;span class="nx"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="sr"&gt;/div&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;;
-</code></pre>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">cls</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">content</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">};</span>
 
-<p></span><span class="p">};</span></p>
-
-<p><span class="kr">const</span> <span class="nx">SegmentedControl</span> <span class="o">=</span> <span class="p">({</span><span class="nx">activeIndex</span><span class="p">,</span> <span class="nx">children</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="kr">const</span> <span class="nx">SegmentedControl</span> <span class="o">=</span> <span class="p">({</span><span class="nx">activeIndex</span><span class="p">,</span> <span class="nx">children</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"segmented-control-container"</span><span class="o">&gt;</span>
           <span class="p">{</span><span class="nx">React</span><span class="p">.</span><span class="nx">Children</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">child</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
               <span class="k">return</span> <span class="nx">renderSegment</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">activeIndex</span><span class="p">);</span>
           <span class="p">})}</span>
-      <span class="o">&lt;</span><span class="sr">/div&gt; </span><span class="err">
+      <span class="o">&lt;</span><span class="sr">/div&gt; </span><span class="err"> 
 </span>  <span class="p">);</span>
-<span class="p">}</span></code></pre></figure></p>
+<span class="p">}</span></code></pre></figure>
+
 
   </div>
 
@@ -133,25 +132,25 @@
 
     <span class="post-date">08 Mar 2014</span>
 
-    <p>When I started learning ruby, what really intrigued me was the fact that 99% of the time I didn't know how to do something, I could just guess, and it ended up being right (or close to it).</p>
+    <p>When I started learning ruby, what really intrigued me was the fact that 99% of the time I didn’t know how to do something, I could just guess, and it ended up being right (or close to it).</p>
 
 <p>Every once and a while though, I run into something that makes me scratch my head.</p>
 
 <p>For example, take a look at the following code snippet:</p>
 
-<p><figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span>
 <span class="c1"># =&gt; false</span>
 <span class="n">x</span>
 <span class="c1"># =&gt; false</span>
 <span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span>
 <span class="c1"># =&gt; false</span>
 <span class="n">x</span>
-<span class="c1"># =&gt; true</span></code></pre></figure></p>
+<span class="c1"># =&gt; true</span></code></pre></figure>
 
-<p>Wait, how is that possible? The problem here is that unlike &amp;&amp;, 'and' has a lower operator precedence than '=', and thus:</p>
+<p>Wait, how is that possible? The problem here is that unlike &amp;&amp;, ‘and’ has a lower operator precedence than ‘=’, and thus:</p>
 
-<p><figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span>
-<span class="c1"># =&gt; (x = true) and false</span></code></pre></figure></p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span> 
+<span class="c1"># =&gt; (x = true) and false</span></code></pre></figure>
 
 <p>While the line returns false (as expected), we end up assigning true to x.</p>
 
@@ -168,23 +167,24 @@
 
     <p>Want to monkey patch a ruby class, but hesitant of the impact of global changes?  Ruby 2.1 introduces Refinements, which allow you to monkey patch a class, limited to a local scope.</p>
 
-<p>For example, let's say you frequently have the need to calculate factorials. You think about monkey patching in a ! method onto fixnum, but know that it will lead to unintended consequences if others using your code are not aware ( e.g. someone tries to coerce a numeric to a boolean by using !!number ).</p>
+<p>For example, let’s say you frequently have the need to calculate factorials. You think about monkey patching in a ! method onto fixnum, but know that it will lead to unintended consequences if others using your code are not aware ( e.g. someone tries to coerce a numeric to a boolean by using !!number ).</p>
 
 <p>So instead, we define a refinement inside a Factorial module -</p>
 
-<p><figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Factorial</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Factorial</span>
   <span class="n">refine</span> <span class="no">Fixnum</span> <span class="k">do</span>
     <span class="k">def</span> <span class="o">!</span>
       <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="nb">self</span><span class="p">).</span><span class="nf">reduce</span><span class="p">(:</span><span class="o">*</span><span class="p">)</span> <span class="o">||</span> <span class="mi">1</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre></figure></p>
+<span class="k">end</span></code></pre></figure>
 
-<p>Now, we can use this anywhere we include our module, but won't impact code elsewhere.</p>
+<p>Now, we can use this anywhere we include our module, but won’t impact code elsewhere.</p>
 
-<p><figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints false</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints false</span>
 <span class="n">using</span> <span class="no">Factorial</span>
-<span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints 120</span></code></pre></figure></p>
+<span class="nb">puts</span> <span class="o">!</span><span class="mi">5</span> <span class="c1"># prints 120</span></code></pre></figure>
+
 
   </div>
 
